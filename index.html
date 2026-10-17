@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hungarian State Opera House - Ticket Booking </title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="site-head">
+        <div class="logo"
+            <h1>Hungarian State Opera House</h1>
+            <p>Budapest, Hungary</p>
+        </div>
+        <nav>
+            <a href="#venue">Venue</a>
+            <a href="#tickets">Tickets</a>
+            <a href="#booking">My booking</a>
+        </nav>
+    </header>
+    <main>
+        <section class="intro" id="venue">
+            <p class="subtitle">Interactive Venue Ticketing</p>
+            <h2>Choose your seat</h2>
+            <p>Explore the seating layout and select a seat that suits you</p>
+        </section>
+        <section class="venue-panel" id="tickets">
+            <div class="venue-heading">
+                <div>
+                    <h2>Main auditorium</h2>
+                    <p>Choose a seat to see its details and price.</p>
+                </div>
+                <span>3 seating sections</span>
+            </div>
+            <div class="stage">
+                <p>STAGE</p>
+            </div>
+            <div class="seat-legend">
+                <span>
+                    <i class="legend-seat vip"></i>
+                    VIP Section - 40 AZN
+                </span>
+                <span>
+                    <i class="legend-seat premium"></i>
+                    Orchestra - 25 AZN
+                </span>
+                <span>
+                    <i class="legend-seat standard"></i>
+                    Gallery - 15 AZN
+                </span>
+                <span>
+                    <i class="legend-seat unavailable"></i>
+                    Unavailable
+                </span>
+            </div>
+            <div class="map-controls">
+                <button type="button" id="zoom-in">Zoom In +</button>
+                <button type="button" id="zoom-out">Zoom Out -</button>
+                <button type="button" id="move-up">Move Up</button>
+                <button type="button" id="move-down">Move Down</button>
+                <button type="button" id="move-left">Move Left</button>
+                <button type="button" id="move-right">Move Right</button>    
+                <button type="button" id="reset-view">Reset View</button>
+            </div>
+            <div class="map-viewport" id="map-viewport">
+                <div class="venue-map" id="venue-map"
+                    <section class="seat-section">
+                        <h3>VIP Section</h3>
+                        <p>Premium seating</p>
+                        <div class="seat-grid" id="vip-seats"></div>
+                    </section>
+                    <section class="seat-section">
+                        <h3>Orchestra</h3>
+                        <p>Main auditorium seating</p>
+                        <div class="seat-grid" id="orchestra-seats"></div>
+                    </section>
+                    <section class="seat-section">
+                        <h3>Gallery</h3>
+                        <p>Upper seating area</p>
+                        <div class="seat-grid" id="gallery-seats"></div>
+                    </section>
+            </div>
+        </section>
+        <div class="booking-layout" id="booking">
+            <section class="panel seat-details">
+                <h2>Seat Details</h2>
+                <p>Select an available seat to inspect it</p>
+                <div id="details-content">
+                    <p>No seat is selected</p>
+                </div>
+                <button type="button" id="add-to-card" disabled>
+                    Add to Cart
+                </button>
+            </section>
+            <section class="panel shopping-cart">
+                <h2>My booking</h2>
+                <div id="cart-items">
+                    <p>Your cart is empty</p>
+                </div>
+                <div id="cart-total">
+                    <span>Total</span>
+                    <strong id="cart-total">0 AZN</strong>
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <p>Hungarian State Opera House Ticketing System</p>
+    </footer>
+</body>    
+</html>
