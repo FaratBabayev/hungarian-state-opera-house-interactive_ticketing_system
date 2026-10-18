@@ -69,7 +69,6 @@ nav a:hover {
     border-radius: 12px;
 }
 .venue-heading {
-    text-align: center;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -159,48 +158,64 @@ nav a:hover {
     overflow: hidden;
 }
 .venue-map {
-    min-width: 600px; 
-    padding: 25px;
+    width: 100%;
+    padding: 20px;
+    background-color: #FFFCF6;
+    border: 1px solid #A77B35;
+    border-radius: 12px;
+    text-align: center;
 }
 .seat-section {
-    margin-bottom: 25px;
-    padding: 20px;
+    margin: 0 auto 25px;
+    padding: 12px 10px;
     text-align: center;
-    background-color: #F0E6D6;
-    border: 1px solid #443441;
-    border-radius: 10px;
-}
-.seat-section:last-child {
-    margin-bottom: 0;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #D8C8AD;
+    border-radius: 0;
 }
 .seat-section h3 {
-    margin-bottom: 4px;
-    color: #A77B35;
+    margin: 0 0 4px;
+    color: #713D4A;
     font-family: Georgia, "Times New Roman", serif;
-    letter-spacing: 2px;
 }
 .seat-section > p {
-    margin-bottom: 18px;
+    margin: 0 0 15px;
     color: #71645E;
     font-size: 13px;
 }
+.seat-section:first-child {
+    max-width: 600px;
+}
+.seat-section:nth-child(2) {
+    max-width: 850px;
+}
+.seat-section:last-child {
+    max-width: 1000px;
+    margin-bottom: 0;
+    border-bottom: none;
+}
 .seat-grid {
     display: grid;
-    grid-template-columns: repeat(10, minmax(24px, 1fr));
-    gap: 10px;
-    max-width: 650px;
+    grid-template-columns: repeat(10, 32px);
+    justify-content: center;
+    gap: 8px;
+    max-width: 100%;
     margin: 0 auto;
 }
 .seat {
-    min-width: 0;
-    aspect-ratio: 1 / 1;
-    padding: 2px;
-    color: #17151b;
-    background-color: #e3c27a;
-    border: 1px solid transparent;
-    border-radius: 5px 5px 3px 3px;
-    font-size: 11px;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    color: #34272A;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    font-size: 10px;
     font-weight: bold;
+    cursor: pointer;
+}
+.seat.vip {
+    background-color: #e3c27a;
 }
 .seat.premium {
     background-color: #75a9a1;
@@ -211,6 +226,17 @@ nav a:hover {
 .seat.unavailable {
     color: #d1cbd1;
     background-color: #625b64;
+}
+.seat.inspected {
+    border: 3px solid #713D4A;
+    outline: 2px solid #D8B86C;
+    outline-offset: 1px;
+}
+.seat:disabled {
+    cursor: not-allowed;
+}
+.seat:hover:not(:disabled) {
+    border-color: #713D4A;
 }
 .seat.in-cart {
     color: #ffffff;
@@ -232,19 +258,22 @@ nav a:hover {
     border-radius: 12px;
 }
 .panel h2 {
-    color: #e3c27a;
+    color: #713D4A;
     font-family: Georgia, "Times New Roman", serif;
 }
 .seat-details > p,
 #details-content {
-    color: #71645E;
+    color: #34272A;
+}
+#details-content p {
+    margin: 8px 0;
 }
 #details-content {
     min-height: 85px;
     margin-bottom: 15px;
 }
 #details-content strong {
-    color: #f5f0e8;
+    color: #34272A;
 }
 #add-to-cart {
     padding: 12px 20px;
@@ -268,8 +297,8 @@ nav a:hover {
     gap: 12px;
     margin-bottom: 12px;
     padding: 12px;
-    background-color: #302632;
-    border: 1px solid #443441;
+    background-color: #F5EFE3;
+    border: 1px solid #D8C8AD;
     border-radius: 7px;
 }
 .cart-item p {
@@ -281,15 +310,15 @@ nav a:hover {
     gap: 15px;
     margin-top: 20px;
     padding-top: 18px;
-    border-top: 1px solid #655264;
+    border-top: 1px solid #D8C8AD;
 }
 .cart-total strong {
-    color: #e3c27a;
+    color: #713D4A;
     font-size: 20px;
 }
 button:focus-visible,
 nav a:focus-visible {
-    outline: 3px solid #ffffff;
+    outline: 3px solid #713D4A;
     outline-offset: 3px;
 }
 footer {
