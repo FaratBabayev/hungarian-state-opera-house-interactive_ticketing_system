@@ -1,0 +1,350 @@
+* {
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f5efe3;
+    color: #34272A;
+    line-height: 1.6;
+}
+.site-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    padding: 24px 6%;
+    background-color: #FFFCF6;
+    border-bottom: 1px solid #8f7040;
+}
+.logo h1 {
+    margin-bottom: 2px;
+    color: #A77B35;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 25px;
+}
+.logo p {
+    margin-bottom: 0;
+    color: #71645E;
+    font-size: 14px;
+}
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+nav a {
+    color: #34272A;
+    font-size: 15px;
+}
+nav a:hover {
+    color: #A77B35;
+}
+.intro {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 65px 24px 45px;
+    text-align: center;
+}
+.subtitle {
+    color: #A77B35;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+.intro h2 {
+    margin-bottom: 16px;
+    font-family: Georgia, 'Times New Roman', serif;
+}
+.venue-panel {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto 35px;
+    padding: 30px;
+    background-color: #FFFCF6;
+    border: 1px solid #443441;
+    border-radius: 12px;
+}
+.venue-heading {
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+.venue-heading p{
+    margin-bottom: 0;
+    color: #71645E;
+}
+.venue-heading span {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 7px 12px;
+    color: #713D4A;
+    border: 1px solid #A77B35;
+    border-radius: 20px;
+    font-size: 13px;
+}
+.stage {
+    max-width: 650px;
+    margin: 0 auto 30px;
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #b18b70;
+    border-radius: 50% 50% 8px 8px / 35% 35% 8px 8px;
+    background-color: #713D4A;
+}
+.stage p {
+    margin: 0;
+    color: #fff3df;
+    font-family: Georgia, 'Times New Roman', serif;
+    letter-spacing: 4px;
+}
+.seat-legend {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px 24px;
+    margin-bottom: 25px;
+}
+.seat-legend span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #34272A;
+    font-size: 13px;
+}
+.legend-seat {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 4px;
+}
+.legend-seat.vip {
+    background-color: #e3c27a;
+}
+.legend-seat.premium {
+    background-color: #75a9a1;
+}
+.legend-seat.standard {
+    background-color: #8f83bc;
+}
+.legend-seat.unavailable {
+    background-color: #625b64;
+}
+.map-controls {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.map-controls button {
+    padding: 9px 14px;
+    color: #f5f0e8;
+    background-color: #352b38;
+    border: 1px solid #655264;
+    border-radius: 6px;
+}
+.map-controls button:hover {
+    background-color: #493747;
+    border-color: #e3c27a;
+}
+.map-viewport {
+    width: 100%;
+    overflow: hidden;
+}
+.venue-map {
+    min-width: 600px; 
+    padding: 25px;
+}
+.seat-section {
+    margin-bottom: 25px;
+    padding: 20px;
+    text-align: center;
+    background-color: #F0E6D6;
+    border: 1px solid #443441;
+    border-radius: 10px;
+}
+.seat-section:last-child {
+    margin-bottom: 0;
+}
+.seat-section h3 {
+    margin-bottom: 4px;
+    color: #A77B35;
+    font-family: Georgia, "Times New Roman", serif;
+    letter-spacing: 2px;
+}
+.seat-section > p {
+    margin-bottom: 18px;
+    color: #71645E;
+    font-size: 13px;
+}
+.seat-grid {
+    display: grid;
+    grid-template-columns: repeat(10, minmax(24px, 1fr));
+    gap: 10px;
+    max-width: 650px;
+    margin: 0 auto;
+}
+.seat {
+    min-width: 0;
+    aspect-ratio: 1 / 1;
+    padding: 2px;
+    color: #17151b;
+    background-color: #e3c27a;
+    border: 1px solid transparent;
+    border-radius: 5px 5px 3px 3px;
+    font-size: 11px;
+    font-weight: bold;
+}
+.seat.premium {
+    background-color: #75a9a1;
+}
+.seat.standard {
+    background-color: #8f83bc;
+}
+.seat.unavailable {
+    color: #d1cbd1;
+    background-color: #625b64;
+}
+.seat.in-cart {
+    color: #ffffff;
+    background-color: #3d875e;
+    border-color: #a4e2b9;
+}
+.booking-layout {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto 60px;
+}
+.panel {
+    padding: 25px;
+    background-color: #FFFCF6;
+    border: 1px solid #443441;
+    border-radius: 12px;
+}
+.panel h2 {
+    color: #e3c27a;
+    font-family: Georgia, "Times New Roman", serif;
+}
+.seat-details > p,
+#details-content {
+    color: #71645E;
+}
+#details-content {
+    min-height: 85px;
+    margin-bottom: 15px;
+}
+#details-content strong {
+    color: #f5f0e8;
+}
+#add-to-cart {
+    padding: 12px 20px;
+    color: #17151b;
+    background-color: #e3c27a;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+}
+#add-to-cart:hover:not(:disabled) {
+    background-color: #f0d79c;
+}
+#add-to-cart:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+}
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    padding: 12px;
+    background-color: #302632;
+    border: 1px solid #443441;
+    border-radius: 7px;
+}
+.cart-item p {
+    margin-bottom: 3px;
+}
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 20px;
+    padding-top: 18px;
+    border-top: 1px solid #655264;
+}
+.cart-total strong {
+    color: #e3c27a;
+    font-size: 20px;
+}
+button:focus-visible,
+nav a:focus-visible {
+    outline: 3px solid #ffffff;
+    outline-offset: 3px;
+}
+footer {
+    padding: 25px 20px;
+    text-align: center;
+    background-color: #EAE0D1;
+    border-top: 1px solid #443441;
+}
+footer p {
+    margin-bottom: 5px;
+    color: #71645E;
+    font-size: 13px;
+}
+@media (max-width: 700px) {
+    .site-head {
+        flex-direction: column;
+        text-align: center;
+    }
+    nav {
+        justify-content: center;
+        gap: 16px;
+    }
+    .intro {
+        padding: 45px 20px 30px;
+    }
+    .venue-panel {
+        width: 95%;
+        padding: 16px;
+    }
+    .venue-heading {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .seat-legend {
+        justify-content: flex-start;
+        gap: 12px;
+    }
+    .map-controls button {
+        flex-grow: 1;
+    }
+    .venue-map {
+        padding: 14px;
+    }
+    .seat-section {
+        padding: 14px 8px;
+    }
+    .seat-grid {
+        gap: 6px;
+    }
+    .booking-layout {
+        grid-template-columns: 1fr;
+        width: 95%;
+        gap: 16px;
+    }
+    .panel {
+        padding: 18px;
+    }
+}
