@@ -1,5 +1,6 @@
 let selectedSeat = null;
 let prices = [40, 25, 15];
+let cart = [];
 let sectionNames = ["VIP Section", "Orchestra", "Gallery"];
 let sectionIds = ["vip-seats", "orchestra-seats", "gallery-seats"];
 let prefixes = ["V", "O", "G"];
@@ -47,4 +48,44 @@ function inspectSeat(seat) {
         "<p><strong>Price:</strong> " + seat.dataset.price + " AZN</p>";
     document.getElementById("add-to-cart").disabled = false;
 }
+function addToCart() {
+    if (selectedSeat === null) {
+        alert("Please select a seat first.");
+        return;
+    }
+    for (let i = 0; i < cart.length; i++) {
+        if (cart[i].seat === selectedSeat.textContent) {
+            alert("This seat is already in your cart.");
+            return;
+        }
+    }
+    let ticket = {
+        seat: selectedSeat.textContent,
+        section: selectedSeat.dataset.section,
+        price: Number(selectedSeat.dataset.price)
+    };
+    cart.push(ticket);
+    displayCart();
+}
+function displayCart() {
+    let cartItems = document.getElementById("cart-items");
+    let total = 0;
+    cartItems.innerHTML = "";
+    if (cart.length === 0) {
+        cartItems.innerHTML = "<p>Your cart is empty</p>";
+    }
+    for (let i = 0; i < cart.length; i++) {
+        cartItems.innerHTML +=
+            "<div class='cart-item'>" +
+            "<p><strong>Seat:</strong> " + cart[i].seat + "</p>" +
+            "<p><strong>Section:</strong> " + cart[i].section + "</p>" +
+            "<p><strong>Price:</strong> " + cart[i].price + " AZN</p>" +
+            "</div>";
+        total = total + cart[i].price;
+    }
+    document.getElementById("cart-total").textContent = total + " AZN";
+}
+document.getElementById("add-to-cart").onclick = addToCart;
+createSeats();
+displayCart();
 createSeats();
