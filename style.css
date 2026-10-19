@@ -290,6 +290,17 @@ nav a:hover {
     cursor: not-allowed;
     opacity: 0.45;
 }
+.remove-ticket {
+    background-color: #713D4A;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 7px 12px;
+    cursor: pointer;
+}
+.remove-ticket:hover {
+    background-color: #542c36;
+}
 .cart-item {
     display: flex;
     justify-content: space-between;

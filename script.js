@@ -62,9 +62,17 @@ function addToCart() {
     let ticket = {
         seat: selectedSeat.textContent,
         section: selectedSeat.dataset.section,
-        price: Number(selectedSeat.dataset.price)
+        price: Number(selectedSeat.dataset.price),
+        element: selectedSeat  
     };
     cart.push(ticket);
+    selectedSeat.className = selectedSeat.className.replace(" inspected", "");
+    selectedSeat.className += " in-cart";
+    selectedSeat = null;
+    document.getElementById("add-to-cart").disabled = true;
+    document.getElementById("details-content").innerHTML =
+        "<p>No seat is selected.</p>";
+
     displayCart();
 }
 function displayCart() {
@@ -80,12 +88,26 @@ function displayCart() {
             "<p><strong>Seat:</strong> " + cart[i].seat + "</p>" +
             "<p><strong>Section:</strong> " + cart[i].section + "</p>" +
             "<p><strong>Price:</strong> " + cart[i].price + " AZN</p>" +
+            "<button type='button' class='remove-ticket' data-index='" +
+            i + "'>Remove</button>" +
             "</div>";
         total = total + cart[i].price;
     }
     document.getElementById("cart-total").textContent = total + " AZN";
+    let removeButtons = document.getElementsByClassName("remove-ticket");
+    for (let i = 0; i < removeButtons.length; i++) {
+        removeButtons[i].onclick = function() {
+            removeTicket(Number(this.dataset.index));
+        };
+    }
+}
+function removeTicket(index) {
+    let ticket = cart[index];
+    ticket.element.className =
+        ticket.element.className.replace(" in-cart", "");
+    cart.splice(index, 1);
+    displayCart();
 }
 document.getElementById("add-to-cart").onclick = addToCart;
 createSeats();
 displayCart();
-createSeats();
