@@ -74,6 +74,7 @@ function addToCart() {
         "<p>No seat is selected.</p>";
 
     displayCart();
+    updateSeatCounts();
 }
 function displayCart() {
     let cartItems = document.getElementById("cart-items");
@@ -107,7 +108,24 @@ function removeTicket(index) {
         ticket.element.className.replace(" in-cart", "");
     cart.splice(index, 1);
     displayCart();
+    updateSeatCounts();
+}
+function updateSeatCounts() {
+    let countIds = ["vip-count", "orchestra-count", "gallery-count"];
+    let sectionSeatIds = ["vip-seats", "orchestra-seats", "gallery-seats"];
+    for (let s = 0; s < 3; s++) {
+        let seats = document.getElementById(sectionSeatIds[s]).children;
+        let available = 0;
+        for (let i = 0; i < seats.length; i++) {
+            if (!seats[i].disabled && !seats[i].className.includes("in-cart")) {
+                available++;
+            }
+        }
+        document.getElementById(countIds[s]).textContent =
+            available + " available seats";
+    }
 }
 document.getElementById("add-to-cart").onclick = addToCart;
 createSeats();
 displayCart();
+updateSeatCounts();

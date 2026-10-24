@@ -343,6 +343,11 @@ footer p {
     color: #71645E;
     font-size: 13px;
 }
+.seat-count {
+    margin-top: 12px;
+    color: #71645E;
+    font-size: 12px;
+}
 @media (max-width: 700px) {
     .site-head {
         flex-direction: column;
