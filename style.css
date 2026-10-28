@@ -377,6 +377,8 @@ footer p {
     }
     .venue-map {
         padding: 14px;
+        transform-origin: center center;
+        transition: transform 0.15s ease;
     }
     .seat-section {
         padding: 14px 8px;

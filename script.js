@@ -4,6 +4,11 @@ let cart = [];
 let sectionNames = ["VIP Section", "Orchestra", "Gallery"];
 let sectionIds = ["vip-seats", "orchestra-seats", "gallery-seats"];
 let prefixes = ["V", "O", "G"];
+let mapScale = 1;
+let mapX = 0;
+let mapY = 0;
+const zoomStep = 0.1;
+const moveStep = 30;
 function createSeats() {
     for (let s = 0; s < 3; s++) {
         let container = document.getElementById(sectionIds[s]);
@@ -125,7 +130,49 @@ function updateSeatCounts() {
             available + " available seats";
     }
 }
+function updateMapView() {
+    let venueMap = document.querySelector(".venue-map");
+    venueMap.style.transform =
+        "translate(" + mapX + "px, " + mapY + "px) scale(" + mapScale + ")";
+}
+function zoomIn() {
+    mapScale = Math.min(mapScale + zoomStep, 2);
+    updateMapView();
+}
+function zoomOut() {
+    mapScale = Math.max(mapScale - zoomStep, 0.5);
+    updateMapView();
+}
+function moveUp() {
+    mapY += moveStep;
+    updateMapView();
+}
+function moveDown() {
+    mapY -= moveStep;
+    updateMapView();
+}
+function moveLeft() {
+    mapX += moveStep;
+    updateMapView();
+}
+function moveRight() {
+    mapX -= moveStep;
+    updateMapView();
+}
+function resetView() {
+    mapScale = 1;
+    mapX = 0;
+    mapY = 0;
+    updateMapView();
+}
 document.getElementById("add-to-cart").onclick = addToCart;
+document.getElementById("zoom-in").onclick = zoomIn;
+document.getElementById("zoom-out").onclick = zoomOut;
+document.getElementById("move-up").onclick = moveUp;
+document.getElementById("move-down").onclick = moveDown;
+document.getElementById("move-left").onclick = moveLeft;
+document.getElementById("move-right").onclick = moveRight;
+document.getElementById("reset-view").onclick = resetView;
 createSeats();
 displayCart();
 updateSeatCounts();
