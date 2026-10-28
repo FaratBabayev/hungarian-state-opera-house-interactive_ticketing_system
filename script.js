@@ -80,6 +80,7 @@ function addToCart() {
 
     displayCart();
     updateSeatCounts();
+    saveCart();
 }
 function displayCart() {
     let cartItems = document.getElementById("cart-items");
@@ -114,6 +115,7 @@ function removeTicket(index) {
     cart.splice(index, 1);
     displayCart();
     updateSeatCounts();
+    saveCart();
 }
 function updateSeatCounts() {
     let countIds = ["vip-count", "orchestra-count", "gallery-count"];
@@ -129,6 +131,17 @@ function updateSeatCounts() {
         document.getElementById(countIds[s]).textContent =
             available + " available seats";
     }
+}
+function saveCart() {
+    let savedCart = [];
+    for (let i = 0; i < cart.length; i++) {
+        savedCart.push({
+            seat: cart[i].seat,
+            section: cart[i].section,
+            price: cart[i].price
+        });
+    }
+    localStorage.setItem("operaCart", JSON.stringify(savedCart));
 }
 function updateMapView() {
     let venueMap = document.querySelector(".venue-map");
