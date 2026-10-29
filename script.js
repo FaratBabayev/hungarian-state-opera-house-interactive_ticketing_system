@@ -143,6 +143,29 @@ function saveCart() {
     }
     localStorage.setItem("operaCart", JSON.stringify(savedCart));
 }
+function loadCart() {
+    let savedCart = localStorage.getItem("operaCart");
+    if (savedCart === null) {
+        return;
+    }
+    let savedTickets = JSON.parse(savedCart);
+    for (let i = 0; i < savedTickets.length; i++) {
+        let ticket = savedTickets[i];
+        let seats = document.getElementsByClassName("seat");
+        for (let j = 0; j < seats.length; j++) {
+            if (seats[j].textContent === ticket.seat) {
+                seats[j].className += " in-cart";
+                cart.push({
+                    seat: ticket.seat,
+                    section: ticket.section,
+                    price: ticket.price,
+                    element: seats[j]
+                });
+                break;
+            }
+        }
+    }
+}
 function updateMapView() {
     let venueMap = document.querySelector(".venue-map");
     venueMap.style.transform =
@@ -187,5 +210,6 @@ document.getElementById("move-left").onclick = moveLeft;
 document.getElementById("move-right").onclick = moveRight;
 document.getElementById("reset-view").onclick = resetView;
 createSeats();
+loadCart();
 displayCart();
 updateSeatCounts();
