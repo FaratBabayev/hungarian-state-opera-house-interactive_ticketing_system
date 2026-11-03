@@ -199,15 +199,17 @@ nav a:hover {
 }
 .seat-grid {
     display: grid;
-    grid-template-columns: repeat(10, 32px);
-    justify-content: center;
+    grid-template-columns: repeat(10, minmax(0, 1fr));
     gap: 8px;
-    max-width: 100%;
+    width: min(100%, 392px);
+    max-width: 392px;
     margin: 0 auto;
 }
 .seat {
-    width: 32px;
-    height: 32px;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    min-width: 0;
     padding: 0;
     color: #34272A;
     border: 2px solid transparent;
@@ -242,8 +244,8 @@ nav a:hover {
 }
 .seat.in-cart {
     color: #ffffff;
-    background-color: #3d875e;
-    border-color: #a4e2b9;
+    background-color: #286747;
+    border-color: #b5dfc4;
 }
 .booking-layout {
     display: grid;
@@ -354,6 +356,7 @@ footer p {
     .site-head {
         flex-direction: column;
         text-align: center;
+        padding: 18px 4%;
     }
     nav {
         justify-content: center;
@@ -370,15 +373,24 @@ footer p {
         flex-direction: column;
         align-items: flex-start;
     }
+    .logo h1 {
+        font-size: 21px;
+    }
+    .venue-panel {
+        padding: 12px;
+    }
+    .seat {
+        font-size: 9px;
+    }
     .seat-legend {
         justify-content: flex-start;
         gap: 12px;
     }
     .map-controls button {
         flex-grow: 1;
+        min-width: 100px;
     }
     .venue-map {
-        padding: 14px;
         transform-origin: center center;
         transition: transform 0.15s ease;
     }
@@ -387,6 +399,12 @@ footer p {
     }
     .seat-grid {
         gap: 6px;
+        width: 100%;
+        max-width: 350px;
+    }
+    .seat {
+        min-width: 0;
+        aspect-ratio: 1 / 1;
     }
     .booking-layout {
         grid-template-columns: 1fr;
@@ -395,5 +413,22 @@ footer p {
     }
     .panel {
         padding: 18px;
+    }
+    .cart-item {
+        flex-wrap: wrap;
+    }
+    .cart-item p {
+        font-size: 13px;
+    }
+}
+@media (max-width: 380px) {
+    .seat-grid {
+        gap: 4px;
+    }
+
+    .seat {
+        font-size: 7px;
+        line-height: 1;
+        padding: 0;
     }
 }
