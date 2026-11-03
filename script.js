@@ -26,7 +26,6 @@ function createSeats() {
             }
             seat.dataset.section = sectionNames[s];
             seat.dataset.price = prices[s];
-            seat.dataset.number = i;
             if (i === 8 || i === 19 || i === 27) {
                 seat.className += " unavailable";
                 seat.disabled = true;
@@ -40,6 +39,9 @@ function createSeats() {
     }
 }
 function inspectSeat(seat) {
+    if (seat.className.includes("in-cart")) {
+        return;
+    }
     if (selectedSeat !== null) {
         selectedSeat.className =
             selectedSeat.className.replace(" inspected", "");
@@ -56,6 +58,9 @@ function inspectSeat(seat) {
 function addToCart() {
     if (selectedSeat === null) {
         alert("Please select a seat first.");
+        return;
+    }
+    if (selectedSeat.disabled || selectedSeat.className.includes("in-cart")) {
         return;
     }
     for (let i = 0; i < cart.length; i++) {
