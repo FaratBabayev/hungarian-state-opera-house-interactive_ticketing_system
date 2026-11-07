@@ -7,6 +7,12 @@ let prefixes = ["V", "O", "G"];
 let mapScale = 1;
 let mapX = 0;
 let mapY = 0;
+let isDragging = false;
+let startX = 0;
+let startY = 0;
+let startMapX = 0;
+let startMapY = 0;
+let wasDragged = false;
 const zoomStep = 0.1;
 const moveStep = 30;
 function createSeats() {
@@ -206,6 +212,60 @@ function resetView() {
     mapY = 0;
     updateMapView();
 }
+function enableMouseNavigation() {
+    let viewport = document.getElementById("map-viewport");
+    viewport.addEventListener("wheel", function(event) {
+        event.preventDefault();
+        if (event.deltaY < 0) {
+            zoomIn();
+        } else {
+            zoomOut();
+        }
+    }, { passive: false });
+}
+function enableDragging() {
+    let viewport = document.getElementById("map-viewport");
+    viewport.addEventListener("pointerdown", function(event) {
+        if (event.button !== 0) {
+            return;
+        }
+        isDragging = true;
+        wasDragged = false;
+        startX = event.clientX;
+        startY = event.clientY;
+        startMapX = mapX;
+        startMapY = mapY;
+    });
+
+    window.addEventListener("pointermove", function(event) {
+        if (!isDragging) {
+            return;
+        }
+        let changeX = event.clientX - startX;
+        let changeY = event.clientY - startY;
+        if (Math.abs(changeX) > 5 || Math.abs(changeY) > 5) {
+            wasDragged = true;
+        }
+        if (wasDragged) {
+            mapX = startMapX + changeX;
+            mapY = startMapY + changeY;
+            updateMapView();
+        }
+    });
+    window.addEventListener("pointerup", function() {
+        isDragging = false;
+    });
+    window.addEventListener("pointercancel", function() {
+        isDragging = false;
+    });
+    document.addEventListener("click", function(event) {
+        if (wasDragged) {
+            event.preventDefault();
+            event.stopPropagation();
+            wasDragged = false;
+        }
+    }, true);
+}
 document.getElementById("add-to-cart").onclick = addToCart;
 document.getElementById("zoom-in").onclick = zoomIn;
 document.getElementById("zoom-out").onclick = zoomOut;
@@ -218,3 +278,5 @@ createSeats();
 loadCart();
 displayCart();
 updateSeatCounts();
+enableMouseNavigation();
+enableDragging();

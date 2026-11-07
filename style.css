@@ -202,7 +202,6 @@ nav a:hover {
     grid-template-columns: repeat(10, minmax(0, 1fr));
     gap: 8px;
     width: min(100%, 392px);
-    max-width: 392px;
     margin: 0 auto;
 }
 .seat {
@@ -367,7 +366,7 @@ footer p {
     }
     .venue-panel {
         width: 95%;
-        padding: 16px;
+        padding: 12px;
     }
     .venue-heading {
         flex-direction: column;
@@ -375,9 +374,6 @@ footer p {
     }
     .logo h1 {
         font-size: 21px;
-    }
-    .venue-panel {
-        padding: 12px;
     }
     .seat {
         font-size: 9px;
@@ -389,10 +385,6 @@ footer p {
     .map-controls button {
         flex-grow: 1;
         min-width: 100px;
-    }
-    .venue-map {
-        transform-origin: center center;
-        transition: transform 0.15s ease;
     }
     .seat-section {
         padding: 14px 8px;
